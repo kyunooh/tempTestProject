@@ -45,15 +45,15 @@ var testCasting = function(_varArr, _function){
     for(var index = 0; index < _varArr.length; index++) {
         if(typeof(_varArr[index]) == "string")
             console.log(_function.name + "(\"" + _varArr[index] + "\") : " + (_function(_varArr[index])));
-        else if(_varArr[index] == _emptyArr)
+        else if(_varArr[index] === _emptyArr)
             console.log(_function.name + "([]) : " + (_function(_varArr[index])));
-        else if(_varArr[index] == _nullArr)
+        else if(_varArr[index] === _nullArr)
             console.log(_function.name + "([null]) : " + (_function(_varArr[index])));
-        else if(_varArr[index] == _undefinedArr)
+        else if(_varArr[index] === _undefinedArr)
             console.log(_function.name + "([undefined]) : " + (_function(_varArr[index])));
-        else if(_varArr[index] == _aNumberArr)
+        else if(_varArr[index] === _aNumberArr)
             console.log(_function.name + "([1]) : " + (_function(_varArr[index])));
-        else if(_varArr[index] == _numbersArr)
+        else if(_varArr[index] === _numbersArr)
             console.log(_function.name + "([1,2,3]) : " + (_function(_varArr[index])));
         else
             console.log(_function.name + "(" + _varArr[index] + ") : " + (_function(_varArr[index])));
