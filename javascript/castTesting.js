@@ -18,6 +18,7 @@
 var _emptyStr = "";
 var _spaceStr = " ";
 var _spaceWithNumberStr = " 123456";
+var _spaceWithNagativeNumberStr = " -123456";
 var _zeroStr = "0";
 var _numStr = "123";
 var _textStr = "text";
@@ -38,7 +39,7 @@ var _functionVar = function() {};
 
 
 
-var varArray = [null, undefined, _emptyStr, _spaceStr, _zeroStr, _spaceWithNumberStr, _numStr, _textStr, _emptyArr, _nullArr, _undefinedArr,
+var varArray = [null, undefined, true, false, 0, 1, -0, NaN, Infinity, -Infinity, _emptyStr, _spaceStr, _zeroStr, _spaceWithNumberStr, _spaceWithNagativeNumberStr, _numStr, _textStr, _emptyArr, _nullArr, _undefinedArr,
 _trueArr, _falseArr, _aNumberArr, _numbersArr, _aStrArr, _aNumberStrArr, _strsArr, _emptyObject, _notEmptyObject, _functionVar];
 
 var testCasting = function(_varArr, _function){
@@ -55,13 +56,23 @@ var testCasting = function(_varArr, _function){
             console.log(_function.name + "([1]) : " + (_function(_varArr[index])));
         else if(_varArr[index] === _numbersArr)
             console.log(_function.name + "([1,2,3]) : " + (_function(_varArr[index])));
+        else if(_varArr[index] === _emptyObject)
+            console.log(_function.name + "({}) : " + (_function(_varArr[index])));
+        else if(_varArr[index] === _notEmptyObject)
+            console.log(_function.name + "({ a: \"abc\"}) : " + (_function(_varArr[index])));
+        else if(_varArr[index] === _trueArr)
+            console.log(_function.name + "([true]) : " + (_function(_varArr[index])));
+        else if(_varArr[index] === _falseArr)
+            console.log(_function.name + "([false]) : " + (_function(_varArr[index])));
+        else if(_varArr[index] === -0)
+            console.log(_function.name + "(-0) : " + (_function(_varArr[index])));                        
         else
             console.log(_function.name + "(" + _varArr[index] + ") : " + (_function(_varArr[index])));
     }
 };
 
 
-testCasting(varArray, Number);
-testCasting(varArray, String);
-testCasting(varArray, Boolean);
+//testCasting(varArray, Number);
+//testCasting(varArray, String);
+//testCasting(varArray, Boolean);
 testCasting(varArray, Object);
