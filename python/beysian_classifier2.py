@@ -14,35 +14,30 @@ total_word_count = 0
 for i in range(0, len(key_value_list)):
     if i % 2 == 0:
         if key_value_list[i] not in word_dict:
-            word_dict[key_value_list[i]] = {}
+            word_dict[key_value_list[i]] = []
     if i % 2 == 1:
         key = key_value_list[i - 1]
         values = key_value_list[i]
         for value in values:
-            if value not in key:
-                word_dict[key][value] = 1
-            else:
-                word_dict[key][value] += 1
+            word_dict[key].append(value)
             word_set.add(value)
             total_word_count += 1
 
 
-target_words = ["fun", "furious", "fast"]
-
 classifier = {}
 
-for w in word_dict.keys():
-    classifier[w] = 1
+for genre in word_dict.keys():
+    if genre not in classifier.keys():
+        classifier[genre] = 1
 
-for t in target_words:
-    for key in word_dict.keys():
-        print(key)
-        for word in word_dict[key]:
-            print(word_dict[key])
+target_words = ["fun", "furious", "fast"]
 
 
-
+for genre in classifier.keys():
+    for word in target_words:
+        print(genre)
+        print(((1 + word_dict[genre].count(word)) / (len(word_dict[genre]) + len(word_set))))
+        classifier[genre] *= ((1 + word_dict[genre].count(word)) / (len(word_dict[genre]) + len(word_set)))
 
 print(word_dict)
-print(word_set)
-print(total_word_count)
+print(classifier)
