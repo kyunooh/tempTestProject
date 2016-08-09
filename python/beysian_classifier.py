@@ -29,9 +29,18 @@ for i in range(0, len(key_value_list)):
 
 target_words = ["fun", "furious", "fast"]
 
+classifier = {}
+
+for w in word_dict.keys():
+    classifier[w] = 1
+
 for t in target_words:
-    for w in word_dict.keys():
-        pass
+    for key in word_dict.keys():
+        for word in word_dict[key]:
+            print(word_dict[key])
+
+
+
 
 print(word_dict)
 print(word_set)
