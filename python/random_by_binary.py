@@ -22,19 +22,21 @@ def get_random(max_number):
 # Test code
 def test_get_random_when(number):
     print("=== number: " + str(number) + " ===")
+    tries = 10000
     l = []
-    for i in range(10000):
+    for i in range(tries):
         l.append(get_random(number))
-    sum = 0
+    count_sum = 0
     for i in range(number):
         print(i, ":", l.count(i))
-        sum += l.count(i)
+        count_sum += l.count(i)
     for i in l:
         if i >= number:
             print(i)
         if i < 0:
             print(i)
-    print(sum)
+    print(count_sum)
+    assert count_sum == tries
 
 test_get_random_when(1)
 test_get_random_when(2)
