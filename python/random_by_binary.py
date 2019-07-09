@@ -44,6 +44,7 @@ def test_get_random_when(number):
     print(count_sum)
     assert count_sum == tries
 
+
 test_get_random_when(1)
 test_get_random_when(2)
 test_get_random_when(3)
