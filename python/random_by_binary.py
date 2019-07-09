@@ -1,22 +1,28 @@
 from random import randrange
-get_zero_or_one = lambda: randrange(2)
+
+
+def get_zero_or_one():
+    return randrange(2)
 
 
 def get_random(max_number):
-    temp = 0
-    i = 1
+    if max_number <= 1:
+        return 0
+
+    random_num = 0
+    bit = 1
     while True:
-        i = i << 1
-        temp = temp << 1
-        temp += get_zero_or_one()
-        if i >= max_number:
+        bit = bit << 1
+        random_num = random_num << 1
+        random_num += get_zero_or_one()
+        if bit >= max_number:
             # 범위 초과시 처음부터 다시 시작
-            if temp >= max_number:
-                temp = 0
-                i = 1
+            if random_num >= max_number:
+                random_num = 0
+                bit = 1
             else:
                 break
-    return temp
+    return random_num
 
 
 # Test code
